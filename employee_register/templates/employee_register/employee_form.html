@@ -1,0 +1,165 @@
+{% extends "employee_register/base.html" %}       
+
+{% block content %}
+
+<!-- <h1>Employee Form</h1>
+<form action="" method="post">
+    {%csrf_token%}
+    {{form}}
+    <button type="submit"></button>
+</form>
+    -->
+
+<!-- <h1>Employee Form</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Full Name</td>
+            <td>Employee Code</td>
+            <td>Mobile Number</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for employee in employee_form %}
+            <tr>
+                <td>{{employee.fullname}}</td>
+                <td>{{employee.emp_code}}</td>
+                <td>{{employee.mobile}}</td>
+                <td><a href="{% url 'employee_update' employee.id %}">Edit</a></td>
+                <td><a href="{% url 'employee_delete' employee.id %}">Delete</a></td>
+            </tr>
+    </tbody>
+        {% endfor %}
+</table> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-inline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-right: 10px;
+        }
+
+        .form-group label {
+            margin-right: 5px;
+        }
+
+        .btn-large {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-large:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Employee Form</h2>
+
+    <form action="" method="post" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.fullname.id_for_label }}">{{ form.fullname.label }}</label>
+            {{ form.fullname }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.emp_code.id_for_label }}">{{ form.emp_code.label }}</label>
+            {{ form.emp_code }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.mobile.id_for_label }}">{{ form.mobile.label }}</label>
+            {{ form.mobile }}
+        </div>
+        <button type="submit" class="btn-large">Submit</button>
+    </form>
+
+    <h2>Employee List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="padding: 10px; text-align: left;">Full Name</th>
+                <th style="padding: 10px;">Employee Code</th>
+                <th style="padding: 10px;">Mobile Number</th>
+                <th style="padding: 10px;" colspan="2">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for employee in employee_form %}
+                <tr>
+                    <td style="padding: 10px;">{{ employee.fullname }}</td>
+                    <td style="padding: 10px;">{{ employee.emp_code }}</td>
+                    <td style="padding: 10px;">{{ employee.mobile }}</td>
+                    <td style="padding: 10px;"><a href="{% url 'employee_update' employee.id %}">Edit</a></td>
+                    <td style="padding: 10px;"><a href="{% url 'employee_delete' employee.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
+{% endblock content %}
